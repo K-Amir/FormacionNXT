@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/header.ejs') %>
+  <body>
+    <%- include('./partials/navbar.ejs') %>
+    <div class="main">
+      <a href="/?id=<%= id %>"<p>Ejecutar otra operacion</p></a>
+      <h2>Resultado de la accion</h2>
+      <p>Ultima Operacion: - con numero: <%= numero %> del ID: <%= id %></p>
+      <br />
+      <p>Operaciones realizadas: <%= calculation %></p>
+      <br /><br />
+      <p>Valor resultante: <%= result %></p>
+    </div>
+  </body>
+</html>

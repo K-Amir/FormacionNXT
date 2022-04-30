@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/header.ejs') %>
+  <body>
+    <%- include('./partials/navbar.ejs') %>
+    <h2>Introducir valores de la operación</h2>
+    <form method="POST" action="/calc">
+      <div>
+        <label>Id: </label>
+        <input type="text" value="<%= id %>" name="id" />
+      </div>
+      <div>
+        <label>Acción: </label>
+        <select name="accion">
+          <option value="+">Sumar</option>
+          <option value="-">Restar</option>
+          <option value="*">Multiplicar</option>
+          <option value="/">Dividir</option>
+          <option value="R">Resetear</option>
+        </select>
+      </div>
+      <div>
+        <label>Número: </label>
+        <input type="text" name="numero" />
+      </div>
+      <div class="buttons">
+        <input type="submit" value="Enviar" />
+        <input type="submit" name="reset" value="reset" />
+      </div>
+    </form>
+  </body>
+</html>
