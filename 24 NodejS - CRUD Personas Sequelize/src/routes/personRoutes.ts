@@ -5,7 +5,7 @@ import {
   deletePersonById,
   findAllPersons,
   updatePersonById,
-} from "./personController";
+} from "../controllers/personController";
 
 const personRoutes = Router();
 

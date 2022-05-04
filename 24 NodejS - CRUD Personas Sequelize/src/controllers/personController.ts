@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import { Person } from "../domain/Person";
-import { PersonModel } from "../domain/PersonModel";
+import { Person } from "../models/Person";
 
 export const findPersonById = async (req: Request, res: Response) => {
-  let person: PersonModel | null = await Person.findByPk(req.params.id);
+  let person: Person | null = await Person.findByPk(req.params.id);
   if (person) {
-    res.send(person);
+    let { user, name, surname } = person;
+    res.send({ user, name, surname });
   } else {
     res.send({
       error: "Could not find person with the specified id => " + req.params.id,
@@ -14,7 +14,7 @@ export const findPersonById = async (req: Request, res: Response) => {
 };
 
 export const createPerson = async (req: Request, res: Response) => {
-  let person: PersonModel = req.body;
+  let person: Person = req.body;
   await Person.create({ ...person });
   res.send({ success: "Person created successfully" });
 };
@@ -26,7 +26,7 @@ export const deletePersonById = async (req: Request, res: Response) => {
 };
 
 export const findAllPersons = async (req: Request, res: Response) => {
-  let personsList: PersonModel[] = await Person.findAll();
+  let personsList: Person[] = await Person.findAll();
   res.send(personsList);
 };
 
@@ -34,7 +34,7 @@ export const updatePersonById = async (req: Request, res: Response) => {
   const { id } = req.params;
   let person: Person | null = await Person.findByPk(id);
   if (person) {
-    let personToUpdate: PersonModel = req.body;
+    let personToUpdate: Person = req.body;
     person.update({ ...personToUpdate });
     person.save();
     res.send({ success: "Person updated successfully" });

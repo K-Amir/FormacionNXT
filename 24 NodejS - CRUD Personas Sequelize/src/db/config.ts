@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize-typescript";
-import { Person } from "../person/domain/Person";
+import { Person } from "../models/Person";
+
 
 const sequelize = new Sequelize({
   database: "personsdb",

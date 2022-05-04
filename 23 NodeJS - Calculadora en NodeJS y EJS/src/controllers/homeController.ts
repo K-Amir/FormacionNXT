@@ -10,6 +10,7 @@ export const homeIndex = (req: Request, res: Response) => {
 
 export const makeCalc = (req: Request, res: Response) => {
   let { id, numero, accion, reset } = req.body;
+  numero = numero ? numero : 0;
 
   let cookieExpiration = new Date();
   cookieExpiration.setSeconds(cookieExpiration.getSeconds() + 60);
